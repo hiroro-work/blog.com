@@ -10,6 +10,8 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @entries = Entry.where(blog_id: @blog.id)
+    @entry = @blog.entries.build
   end
 
   # GET /blogs/new
