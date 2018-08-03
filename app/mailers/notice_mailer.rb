@@ -12,7 +12,7 @@ class NoticeMailer < ApplicationMailer
     @comment = comment
     mail(
       subject: "新しいコメントが投稿されました",
-      to: "#{admin_mail}"
+      to: "#{ENV['admin_mail']}"
     ) do |format|
       format.text
     end
