@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        #NoticeMailer.notify_admin_comment_added(@blog, @entry, @comment).deliver
+        NoticeMailer.notify_admin_comment_added(@blog, @entry, @comment).deliver
         format.html { redirect_to blog_entry_path(@blog, @entry), notice: 'Comment was successfully created.' }
       else
         format.html { render :new }
@@ -33,7 +33,6 @@ class CommentsController < ApplicationController
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to blog_entry_path(@blog, @entry), notice: 'Comment was successfully destroyed.' }
-      #format.json { head :no_content }
     end
   end
 
@@ -43,10 +42,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to blog_entry_path(@blog, @entry), notice: 'Comment was successfully approved.' }
-        #format.json { head :no_content }
       else
         format.html { redirect_to blog_entry_path(@blog, @entry), notice: 'Comment was unsuccessfully approved.' }
-        #format.json { head :no_content }
       end
     end
   end

@@ -23,8 +23,6 @@ class EntriesController < ApplicationController
   def create
     @blog  = Blog.find(params[:blog_id])
     @entry = @blog.entries.build(entry_params)
-    #@entry = Entry.new(entry_params)
-    #@entry.blog_id = params[:id]
 
     respond_to do |format|
       if @entry.save
