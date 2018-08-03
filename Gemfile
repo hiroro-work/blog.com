@@ -55,6 +55,7 @@ group :development do
   gem 'hirb'
   gem 'hirb-unicode'
   gem 'letter_opener_web'
+  gem 'foreman'
 end
 
 group :test do
