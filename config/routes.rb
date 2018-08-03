@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'blogs#index'
+  get '/blogs/:blog_id/entries/:entry_id/comments' => redirect('/blogs/:blog_id/entries/:entry_id')
   resources :blogs do
     resources :entries, expect: [:index] do
         resources :comments, expect: [:index, :show, :edit, :update] do
