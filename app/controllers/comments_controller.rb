@@ -20,11 +20,9 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         NoticeMailer.notify_admin_comment_added(@blog, @entry, @comment).deliver
-        format.html { redirect_to [@blog, @entry], notice: 'Comment was successfully created.' }
-        #format.json { render :show, status: :created, location: @comment }
+        format.html { redirect_to blog_entry_path(@blog, @entry), notice: 'Comment was successfully created.' }
       else
         format.html { render :new }
-        #format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
